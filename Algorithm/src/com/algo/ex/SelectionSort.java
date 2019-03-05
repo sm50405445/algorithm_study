@@ -26,4 +26,10 @@ public class SelectionSort {
 			System.out.print(array[i]+",");
 		}
 	}
+
+	public static void printArr(int[] arr) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
