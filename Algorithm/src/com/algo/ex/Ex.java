@@ -1,56 +1,22 @@
 package com.algo.ex;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
+
 public class Ex {
-		public static int[] sorted = new int[30];
-	 
-	    public static void mergeSort(int[] arr, int m, int n) {
-	        int middle;
-	        if (m < n) {
-	            middle = (m + n) / 2;
-	            mergeSort(arr, m, middle);
-	            mergeSort(arr, middle + 1, n);
-	            merge(arr, m, middle, n);
-	        }
-	    }
-	 
-	    public static void merge(int[] arr, int m, int middle, int n) {
-	        int i, j, k, t;
-	 
-	        i = m;
-	        j = middle + 1;
-	        k = m;
-	 
-	        while (i <= middle && j <= n) {
-	            if (arr[i] <= arr[j])
-	                sorted[k] = arr[i++];
-	            else
-	                sorted[k] = arr[j++];
-	            k++;
-	        }
-	 
-	        if (i > middle) {
-	            for (t = j; t <= n; t++, k++)
-	                sorted[k] = arr[t];
-	        } else {
-	            for (t = i; t <= middle; t++, k++)
-	                sorted[k] = arr[t];
-	        }
-	 
-	        for (t = m; t <= n; t++)
-	            arr[t] = sorted[t];
-	 
-	        System.out.println("\n 합병 정렬 >> ");
-	        SelectionSort.printArr(arr);
-	 
-	    }
-	    public static void main(String[] args) {
-	        int[] arr = { 69, 10, 30, 2, 2, 8, 31, 22 };
-	        Ex.mergeSort(arr, 0, arr.length - 1);
-	        for(int i = 0;i<arr.length;i++) {
-	        	System.out.print(arr[i]+",");
-	        }
-	    }
-	    
+	
+	public static void main(String[] args) {
+		Queue<Integer> q = new LinkedList<>();
+		q.add(3);
+		q.add(4);
+		q.add(5);
+		
+		q.poll();
+		
+		System.out.println(q.toString());
 	}
+	    
+}
 
 
