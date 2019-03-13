@@ -44,7 +44,6 @@ public class HeapSort {
 		for (int i = 0; i < heap.length; i++) {
 			System.out.print(heap[i] + ",");
 		}
-		int a = (4-1)/2;
-		System.out.println(a);
+		
 	}
 }
