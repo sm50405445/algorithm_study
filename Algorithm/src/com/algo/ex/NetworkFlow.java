@@ -33,6 +33,7 @@ public class NetworkFlow {
 			q.add(start);
 			// 큐가 비어있을때까지 진행
 			while (!q.isEmpty()) {
+				System.out.println("while문 처음에 큐에 담겨 있는 수: " + q.toString());
 				/* System.out.println("while문 한바퀴 돌고 큐에 담겨 있는 수: "+q.toString()); */
 				int x = q.poll();
 
@@ -43,7 +44,7 @@ public class NetworkFlow {
 						// y변수에 연결된 노드의 번호를 담음
 						int y = NodeInf.get(x)[i];
 						// 기본적으로 단방향 노드로 진행할 때의 수용량을 capacity에 저장함
-						
+
 						// 현재 유량보다 남아있는 수용량이 더 커야하고, 한번도 들르지 않은 노드일때
 						if (capacity[x][y] - flow[x][y] > 0 && d[y] == -1) {
 							// 연결된 노드는 큐에 담아줌
@@ -58,54 +59,63 @@ public class NetworkFlow {
 					}
 				}
 
-				/*
-				 * System.out.println("while문 돌리기 전 큐에 담겨 있는 수: "+q.toString());
-				 * 
-				 * for(int i = 1 ; i<=6 ; i++) { if(d[i]==-1) {
-				 * System.out.print("d["+i+"]방문 안함"+" "); }else
-				 * System.out.print("d["+i+"]방문 함"+" 출발한 노드: "+d[i]+" "); }
-				 * System.out.println();
-				 * 
-				 * if(q.isEmpty()) { System.out.println("첫번 째 while문 탈출"); }
-				 */
+				System.out.println("while문 마지막에 큐에 담겨 있는 수: " + q.toString());
+
+				for (int i = 1; i <= 6; i++) {
+					if (d[i] == -1) {
+						System.out.print("d[" + i + "]방문 안함" + " ");
+					} else
+						System.out.print("d[" + i + "]방문 함" + " 출발한 노드: " + d[i] + " ");
+				}
+				System.out.println();
+
+				if (q.isEmpty()) {
+					System.out.println("첫번 째 while문 탈출");
+				}
+
 			}
 			System.out.println();
-			
-			
+
 			if (d[end] == -1)
 				break;
-			
+
 			int mFlow = INF;
-			//끝점으로부터 시작점이 될 때 까지
+			// 끝점으로부터 시작점이 될 때 까지
 			for (int i = end; i != start; i = d[i]) {
-				/*
-				 * System.out.println("mFlow = "+mFlow);
-				 * System.out.println("capacity["+d[i]+"]["+i+"] 값 : "+capacity[d[i]][i]);
-				 * System.out.println("flow["+d[i]+"]["+i+"] 값 : "+flow[d[i]][i]);
-				 */
-				
+
+				System.out.println("mFlow = " + mFlow);
+				System.out.println("capacity[" + d[i] + "][" + i + "] 값 : " + capacity[d[i]][i]);
+				System.out.println("flow[" + d[i] + "][" + i + "] 값 : " + flow[d[i]][i]);
+				System.out.println("flow[" + i + "][" + d[i] + "] 값 : " + flow[i][d[i]]);
+
 				mFlow = Math.min(mFlow, capacity[d[i]][i] - flow[d[i]][i]);
-			}	
-			/*
-			 * System.out.println("mFlow값? = "+mFlow); System.out.println();
-			 */
+			}
+
+			System.out.println("mFlow값? = " + mFlow);
+
 			for (int i = end; i != start; i = d[i]) {
-				//양의 유량 파악(실제유량)
+				// 양의 유량 파악(실제유량)
 				flow[d[i]][i] += mFlow;
-				//음의 유량 파악(경로를 더 찾아보기 위해 임의로 정해둔 음의 유량) 즉 반대방향으로 가는 거라고 보면 됨
+				// 음의 유량 파악(경로를 더 찾아보기 위해 임의로 정해둔 음의 유량) 즉 반대방향으로 가는 거라고 보면 됨
 				flow[i][d[i]] -= mFlow;
 			}
+
 			result += mFlow;
-			
-			/*
-			 * for(int i = 0 ; i<capacity.length ; i++) { for(int j = 0 ; j<capacity.length
-			 * ; j++) { if(flow[i][j]!=0 && flow[i][j]>0) {
-			 * System.out.println("flow["+i+"]["+j+"]의 저장된 값: "+flow[i][j]); } } }
-			 */
-			/*
-			 * System.out.println("result: "+result); System.out.println("두번째 while문 종료");
-			 * System.out.println();
-			 */
+			System.out.println("result = " + result);
+			System.out.println();
+
+			for (int i = 0; i < capacity.length; i++) {
+				for (int j = 0; j < capacity.length; j++) {
+					if (flow[i][j] != 0) {
+						System.out.println("flow[" + i + "][" + j + "]의 저장된 값: " + flow[i][j]);
+					}
+				}
+			}
+
+			System.out.println("result: " + result);
+			System.out.println("두번째 while문 종료");
+			System.out.println();
+
 		}
 	}
 	/*
