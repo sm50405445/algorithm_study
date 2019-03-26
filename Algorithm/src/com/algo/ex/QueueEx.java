@@ -2,7 +2,7 @@ package com.algo.ex;
 
 import java.util.NoSuchElementException;
 
-/*class Queue<T>{
+class QueueEx2<T>{
 	
 	//데이터를 받을 때 데이터 형식을 명시하기로하고 같은 타입을 받는 노드를 생성
 	class Node<T>{
@@ -57,13 +57,13 @@ import java.util.NoSuchElementException;
 	public boolean isEmpty() {
 		return first == null;
 	}
-}*/
+}
 
 public class QueueEx {
 
 	public static void main(String[] args) {
-	/*	
-		Queue<Integer> q = new Queue();
+	
+		QueueEx2<Integer> q = new QueueEx2();
 		q.add(1);
 		q.add(2);
 		q.add(3);
@@ -75,7 +75,7 @@ public class QueueEx {
 		System.out.println(q.isEmpty());
 		System.out.println(q.remove());
 		System.out.println(q.isEmpty());
-		*/
+		
 	}
 	
 }

@@ -8,6 +8,7 @@ public class InsertSort {
 		int temp = 0;
 		for(int i = 0; i<array.length-1;i++) {
 			int j = i;
+			//이전 배열의 인덱스 값이 다음 값보다 작을 때까지 while문 돌아감
 			while(array[j]>array[j+1]) {
 				temp = array[j];
 				array[j] = array[j+1];
