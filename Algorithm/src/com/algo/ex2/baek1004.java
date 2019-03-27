@@ -2,7 +2,7 @@ package com.algo.ex2;
 
 import java.util.*;
 
-public class Main {
+public class baek1004 {
 
 	//점이 원 안에 있나 확인하는 메서드
 	static boolean inCircle(int nodeS, int nodeE, int starS, int starE, int r) {
